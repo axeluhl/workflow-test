@@ -14,8 +14,10 @@ jobs:
         shell: bash
         run: |
           echo "Branch is ${{ github.ref }}"
+          echo "Branch of triggering workflow is ${{ github.event.workflow_run.head_branch }}"
       - name: Checkout
         uses: actions/checkout@v4
+        ref: ${{ github.event.workflow_run.head_branch }}
       - name: Debug Output After Checkout
         shell: bash
         run: |
