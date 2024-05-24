@@ -3,7 +3,7 @@ on:
   workflow_run:
     workflows: [workflow-1]
     types: [completed]
-    #branches: [main, docker-17]
+    branches: [a, b]
   workflow_dispatch: {}
 jobs:
   workflow-2:
