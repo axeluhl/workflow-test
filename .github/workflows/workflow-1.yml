@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo dd if=/dev/zero of=/mnt/large-swapfile bs=1G count=10
           sudo chmod 600 /mnt/large-swapfile
-          mkswap /mnt/large-swapfile
+          sudo mkswap /mnt/large-swapfile
           sudo chown root:root /mnt/large-swapfile
           sudo swapon /mnt/large-swapfile
       - name: Show swap-related memory stats (2)
