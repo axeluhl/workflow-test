@@ -16,9 +16,9 @@ jobs:
       - name: Allocate swap space
         shell: bash
         run: |
-          dd if=/dev/zero of=/var/cache/swapfile bs=1G count=5
-          mkswap /var/cache/swapfile
-          swapon /var/cache/swapfile
+          dd if=/dev/zero of=swapfile bs=1G count=5
+          mkswap swapfile
+          swapon swapfile
       - name: Show swap-related memory stats (2)
         shell: bash
         run: |
