@@ -14,15 +14,16 @@ jobs:
         run: |
           cat /proc/meminfo | grep Swap
           swapon -s
+          pwd
           df -h
       - name: Allocate swap space
         shell: bash
         run: |
-          dd if=/dev/zero of=swapfile bs=1G count=5
-          sudo chmod 600 swapfile
-          mkswap swapfile
-          sudo chown root:root swapfile
-          sudo swapon swapfile
+          sudo dd if=/dev/zero of=/mnt/large-swapfile bs=1G count=10
+          sudo chmod 600 /mnt/large-swapfile
+          mkswap /mnt/large-swapfile
+          sudo chown root:root /mnt/large-swapfile
+          sudo swapon /mnt/large-swapfile
       - name: Show swap-related memory stats (2)
         shell: bash
         run: |
