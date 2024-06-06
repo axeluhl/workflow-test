@@ -18,7 +18,9 @@ jobs:
         run: |
           dd if=/dev/zero of=swapfile bs=1G count=5
           mkswap swapfile
-          swapon swapfile
+          sudo chown root:root swapfile
+          sudo chmod 600 swapfile
+          sudo swapon swapfile
       - name: Show swap-related memory stats (2)
         shell: bash
         run: |
