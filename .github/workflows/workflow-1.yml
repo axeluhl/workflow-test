@@ -9,3 +9,17 @@ jobs:
         shell: bash
         run: |
           echo "This is branch ${{ github.ref }}"
+      - name: Show swap-related memory stats (1):
+        shell: bash
+        run: |
+          cat /proc/meminfo | grep Swap
+      - name: Allocate swap space
+        shell: bash
+        run: |
+          dd if=/dev/zero of=/var/cache/swapfile bs=1G count=5
+          mkswap /var/cache/swapfile
+          swapon /var/cache/swapfile
+      - name: Show swap-related memory stats (2):
+        shell: bash
+        run: |
+          cat /proc/meminfo | grep Swap
